@@ -7,14 +7,7 @@ import About from "@/components/sections/About";
 import Portfolio from "@/components/sections/Portfolio";
 import Contact from "@/components/sections/Contact";
 import Resume from "@/components/sections/Resume";
-import Footer from "@/components/sections/Footer";
-// import Hero from '@/components/Hero'
-// import About from '@/components/About'
-// import Skills from '@/components/Skills'
-// import Projects from '@/components/Projects'
-// import Experience from '@/components/Experience'
-// import Contact from '@/components/Contact'
-// import Footer from '@/components/Footer'
+import Footer from "@/components/layout/Footer";
 
 export default function HomePage() {
   const [activeSection, setActiveSection] = useState("hero");
@@ -44,8 +37,6 @@ export default function HomePage() {
     email: "brian.kidd.one@gmail.com",
     linkedin: "https://www.linkedin.com/in/briankidd9design/",
     github: "https://github.com/briankidd9design",
-    // behance: "https://behance.net/alexjohnson",
-    // resume: "/resume-alex-johnson.pdf",
   };
 
   // Section change handler for navigation
@@ -99,106 +90,6 @@ export default function HomePage() {
       linkedin: portfolioOwner.linkedin,
     },
   };
-  // const navigationProps = {
-  //   items: navItems,
-
-  //   owner: portfolioOwner,
-  //   showThemeToggle: true,
-  //   showResumeButton: true,
-  //   resumeUrl: portfolioOwner.resume,
-  //   socialLinks: {
-  //     github: portfolioOwner.github,
-  //     linkedin: portfolioOwner.linkedin,
-  //     behance: portfolioOwner.behance,
-  //   },
-  //   ctaButton: {
-  //     text: "Hire Me",
-  //     href: "#contact",
-  //     variant: "primary",
-  //   },
-  // };
-
-  // Skills data to pass to components
-  const skillsData = {
-    technical: [
-      "React/Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Figma",
-      "Adobe Creative Suite",
-      "Framer Motion",
-      "Three.js",
-    ],
-    ux: [
-      "User Research",
-      "Wireframing",
-      "Prototyping",
-      "Usability Testing",
-      "Information Architecture",
-      "Design Systems",
-      "Accessibility (WCAG)",
-    ],
-  };
-
-  // Featured projects data
-  const featuredProjects = [
-    {
-      id: 1,
-      title: "E-commerce Design System",
-      category: "UX/UI Design",
-      description: "Comprehensive design system for a major retail platform",
-      image: "/projects/design-system.jpg",
-      tags: ["Figma", "React", "Storybook"],
-      link: "/projects/design-system",
-      featured: true,
-    },
-    {
-      id: 2,
-      title: "Financial Dashboard",
-      category: "Frontend Development",
-      description: "Interactive dashboard for personal finance management",
-      image: "/projects/dashboard.jpg",
-      tags: ["Next.js", "D3.js", "TypeScript"],
-      link: "/projects/financial-dashboard",
-      featured: true,
-    },
-    {
-      id: 3,
-      title: "Mobile App Redesign",
-      category: "UX Research",
-      description: "Complete UX overhaul based on user research insights",
-      image: "/projects/mobile-app.jpg",
-      tags: ["User Research", "Prototyping", "A/B Testing"],
-      link: "/projects/mobile-redesign",
-      featured: true,
-    },
-  ];
-
-  // Experience data
-  const experienceData = [
-    {
-      company: "TechCorp",
-      position: "Senior UX Engineer",
-      duration: "2022 - Present",
-      description:
-        "Lead design and development of user-facing features for 2M+ users",
-      achievements: [
-        "Increased user engagement by 40% through redesigned onboarding flow",
-        "Built and maintained design system used across 15+ products",
-      ],
-    },
-    {
-      company: "StartupXYZ",
-      position: "Frontend Developer",
-      duration: "2020 - 2022",
-      description:
-        "Developed responsive web applications and collaborated with design team",
-      achievements: [
-        "Improved page load speeds by 60% through optimization",
-        "Implemented accessibility standards achieving WCAG AA compliance",
-      ],
-    },
-  ];
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
@@ -208,13 +99,7 @@ export default function HomePage() {
       <main>
         {/* Hero Section */}
         <section id="hero" className="section">
-          <Hero
-          // name={portfolioOwner.name}
-          // title={portfolioOwner.title}
-          // location={portfolioOwner.location}
-          // socialLinks={navigationProps.socialLinks}
-          // ctaButton={navigationProps.ctaButton}
-          />
+          <Hero />
         </section>
         <section id="about" className="min-h-screen  scroll-mt-16">
           <About />
