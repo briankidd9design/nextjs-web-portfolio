@@ -24,7 +24,7 @@ const PortfolioSection: React.FC = () => {
       id: 1,
       title: "March Madness Game Predictor",
       description:
-        "Users can compare the stats and get game predictions of teams competing in the annual NCAA March Madness Tournament. The application fetches API data which is then injected into a popular basketball game predictor formula. An Express Proxy server is used to bypass CORS restrictions using Node.JS.",
+        "Users can compare the stats and get game predictions of teams competing in the annual NCAA March Madness Tournament. The application fetches API JSON data which is then injected into a popular basketball game predictor formula. An Express Proxy server is used to bypass CORS restrictions using Node.js.",
       image: "/images/projects/march-madness-preview-desktop.jpg",
       tags: ["HTML5", "CSS3", "Vanilla JavaScript", "Node.js"],
       liveUrl:
