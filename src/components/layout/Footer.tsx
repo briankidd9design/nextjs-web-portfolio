@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Linkedin, Github } from "lucide-react";
+import { Linkedin, Github, Facebook, Palette } from "lucide-react";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -17,6 +17,16 @@ const Footer: React.FC = () => {
       label: "GitHub",
       href: "https://github.com/briankidd9design",
       //   count: "207", // Your GitHub followers or repos
+    },
+    {
+      icon: Facebook,
+      label: "Facebook",
+      href: "https://www.facebook.com/holisticprogrammer",
+    },
+    {
+      icon: Palette,
+      label: "Design Portfolio",
+      href: "https://briankidd9design.github.io/",
     },
   ];
 

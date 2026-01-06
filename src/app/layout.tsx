@@ -12,6 +12,10 @@ export const metadata: Metadata = {
     "UX Engineer, Front End Developer, React, TypeScript, Accessibility, WCAG, Web Development",
   authors: [{ name: "Brian Kidd", url: "https://briankiddmedia.com" }],
   creator: "Brian Kidd",
+  icons: {
+    icon: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   openGraph: {
     title: "Brian Kidd - UX Engineer & Front End Developer",
     description:

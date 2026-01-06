@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Linkedin, Github } from "lucide-react";
+import { Linkedin, Github, Facebook, Palette } from "lucide-react";
 import Image from "next/image";
 
 const Hero: React.FC = () => {
@@ -98,6 +98,24 @@ const Hero: React.FC = () => {
               aria-label="GitHub Profile"
             >
               <Github size={24} />
+            </a>
+            <a
+              href="https://www.facebook.com/holisticprogrammer"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white/20 hover:bg-white/30 transition-colors p-3 rounded-full"
+              aria-label="Facebook Profile"
+            >
+              <Facebook size={24} />
+            </a>
+            <a
+              href="https://briankidd9design.github.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white/20 hover:bg-white/30 transition-colors p-3 rounded-full"
+              aria-label="Design Portfolio"
+            >
+              <Palette size={24} />
             </a>
           </div>
 
