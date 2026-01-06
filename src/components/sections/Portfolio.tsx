@@ -7,7 +7,7 @@ interface Project {
   id: number;
   title: string;
   description: string;
-  image: string;
+  images: string[];
   tags: string[];
   liveUrl?: string;
   githubUrl?: string;
@@ -18,14 +18,32 @@ interface Project {
 
 const PortfolioSection: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const projects: Project[] = [
     {
       id: 1,
+      title: "CoLab Studio",
+      description:
+        "CoLab Studio is a full-stack web application offering a collaborative workspace for music producers to share projects, upload mixes & stems, leave feedback, and track progress—all in one place. New features, including a team page with user profiles and a team member assignment page, are currently in development.",
+      images: [
+        "/images/projects/1-colab-portfolio.jpg",
+        "/images/projects/2-colab-portfolio.jpg",
+        "/images/projects/3-colab-portfolio.jpg",
+        "/images/projects/4-colab-portfolio.jpg",
+      ],
+      tags: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+      liveUrl: "https://www.colabstudio.studio",
+      figmaUrl:
+        "https://www.figma.com/design/TPuEo4zfDX7ZWjTy6MjOpg/CoLab-Studio-UI-Prototype?node-id=0-1&m=dev&t=DsakI9zZqFzgJy6d-1",
+      reelUrl: "https://youtu.be/9_Jy8vgsZNA?si=jIsLp2YsmuIc0FRE",
+    },
+    {
+      id: 2,
       title: "March Madness Game Predictor",
       description:
         "Users can compare the stats and get game predictions of teams competing in the annual NCAA March Madness Tournament. The application fetches API JSON data which is then injected into a popular basketball game predictor formula. An Express Proxy server is used to bypass CORS restrictions using Node.js.",
-      image: "/images/projects/march-madness-preview-desktop.jpg",
+      images: ["/images/projects/march-madness-preview-desktop.jpg"],
       tags: ["HTML5", "CSS3", "Vanilla JavaScript", "Node.js"],
       liveUrl:
         "https://march-madness-game-predictor-72494844c114.herokuapp.com/index.html",
@@ -35,29 +53,29 @@ const PortfolioSection: React.FC = () => {
         "https://www.figma.com/design/ZsI7GMw1R43zP83cXbGNKG/March-Madness-Predictor?node-id=5-33&m=dev&t=F3JFvcnkMRL1O8J5-1",
     },
     {
-      id: 2,
+      id: 3,
       title: "Boeing 787 Dreamliner Site",
       description:
         "Spearheaded development of promotional page for Boeing's 787 Dreamliner using enterprise CMS. This project involved creating a responsive, user-friendly interface that showcased the aircraft's key features and specifications while maintaining enterprise-level performance standards.",
-      image: "/images/projects/787-dreamliner-preview-desktop.jpg",
+      images: ["/images/projects/787-dreamliner-preview-desktop.jpg"],
       tags: ["HTML5", "CSS3", "TeamSite CMS"],
       liveUrl: "https://www.boeing.com/commercial/787",
     },
     {
-      id: 3,
+      id: 4,
       title: "Website Builder Support Page",
       description:
         "As part of a large website migration project, I built a support page for Pacific Software Publishing's (PSP) WebdeXpress, website building tool. PSP had separate sites for their products and services. In order to improve SEO, page views, and decrease bounce rate, the company migrated all its sites under the pspinc.com umbrella.",
-      image: "/images/projects/web-de-xpress-preview-desktop.jpg",
+      images: ["/images/projects/web-de-xpress-preview-desktop.jpg"],
       tags: ["HTML5", "Sass", "JavaScript", "PHP"],
       liveUrl: "https://www.pspinc.com/webdexpress/manual/welcome",
     },
     {
-      id: 4,
+      id: 5,
       title: "Full Stack React Movie App",
       description:
         "The React front end allows users to create accounts, login, and add movie info that is stored in a MongoDB database.",
-      image: "/images/projects/react-full-stack-movie-app-preview-desktop.jpg",
+      images: ["/images/projects/react-full-stack-movie-app-preview-desktop.jpg"],
       tags: ["React", "Node.js", "MongoDB"],
       liveUrl: "https://brians-movies.herokuapp.com/movies",
       githubUrl:
@@ -66,22 +84,22 @@ const PortfolioSection: React.FC = () => {
         "https://github.com/briankidd9design/React-Movie-Database-Back-End",
     },
     {
-      id: 5,
+      id: 6,
       title: "Responsive User Interface Prototype",
       description:
         "A client wanted me to code a template for the UI of their website. Using their design created in Figma, I was able to crete the UI using HTML5, CSS, employing the BEM methodology for CSS selectors, and JavaScript",
-      image: "/images/projects/responsive-user-interface-preview-desktop.jpg",
+      images: ["/images/projects/responsive-user-interface-preview-desktop.jpg"],
       tags: ["Figma", "HTML5", "CSS3", "JavaScript"],
       liveUrl: "https://briankidd9design.github.io/pspinc-site/",
       githubUrl: "https://github.com/briankidd9design/psp-design-layout",
       reelUrl: "https://youtu.be/AqG2VyKoEYI?si=Ad3CeUC4zYJOkShB",
     },
     {
-      id: 6,
+      id: 7,
       title: "Restaurant Review Page",
       description:
         "Reviews are displayed to the UI of this restaurants review page using the Yelp Fusion API using an Express Proxy Server in order to circumvent CORS restrictions on the Yelp's api server. Notice, the Yelp API only shows previews of the top three reviews, so I also linked to the entire review on Yelp.",
-      image: "/images/projects/steves-cafe-reviews-preview-desktop.jpg",
+      images: ["/images/projects/steves-cafe-reviews-preview-desktop.jpg"],
       tags: ["HTML5", "JavaScript", "Express.js", "Node.js"],
       liveUrl:
         "https://yelp-restaurant-reviews-app-3b4f952c753e.herokuapp.com/",
@@ -115,7 +133,10 @@ const PortfolioSection: React.FC = () => {
               {projects.map((project, index) => (
                 <button
                   key={project.id}
-                  onClick={() => setSelectedProject(index)}
+                  onClick={() => {
+                    setSelectedProject(index);
+                    setCurrentImageIndex(0);
+                  }}
                   className={`flex-shrink-0 px-4 py-2 rounded-lg font-medium transition-all duration-200 whitespace-nowrap ${
                     selectedProject === index
                       ? "bg-blue-900 text-white"
@@ -133,16 +154,33 @@ const PortfolioSection: React.FC = () => {
             {/* Project Image */}
             <div className="h-48 sm:h-64 relative overflow-hidden">
               <Image
-                src={currentProject.image}
+                src={currentProject.images[currentImageIndex]}
                 alt={`${currentProject.title} preview`}
                 fill
-                className="object-cover"
+                className="object-cover object-top"
                 priority
               />
             </div>
+            {/* Image Navigation Dots */}
+            {currentProject.images.length > 1 && (
+              <div className="flex justify-center gap-2 py-3 bg-white">
+                {currentProject.images.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-colors ${
+                      currentImageIndex === index
+                        ? "bg-blue-600"
+                        : "bg-gray-300 hover:bg-gray-400"
+                    }`}
+                    aria-label={`View image ${index + 1}`}
+                  />
+                ))}
+              </div>
+            )}
 
             {/* Project Details */}
-            <div className="p-4 sm:p-6 text-gray-900">
+            <div className={`text-gray-900 ${currentProject.images.length > 1 ? 'p-4 sm:p-6 pt-2 sm:pt-3' : 'p-4 sm:p-6'}`}>
               <h4 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
                 {currentProject.title}
               </h4>
@@ -239,7 +277,10 @@ const PortfolioSection: React.FC = () => {
               {projects.map((project, index) => (
                 <button
                   key={project.id}
-                  onClick={() => setSelectedProject(index)}
+                  onClick={() => {
+                    setSelectedProject(index);
+                    setCurrentImageIndex(0);
+                  }}
                   className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
                     selectedProject === index
                       ? "bg-blue-900 text-white border-l-4 border-blue-300"
@@ -261,18 +302,35 @@ const PortfolioSection: React.FC = () => {
               {/* Project Image - Responsive container */}
               <div className="h-80 relative overflow-hidden">
                 <Image
-                  src={currentProject.image}
+                  src={currentProject.images[currentImageIndex]}
                   alt={`${currentProject.title} preview`}
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                   priority
                 />
               </div>
+              {/* Image Navigation Dots */}
+              {currentProject.images.length > 1 && (
+                <div className="flex justify-center gap-2 py-3 bg-white">
+                  {currentProject.images.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentImageIndex(index)}
+                      className={`w-2 h-2 rounded-full transition-colors ${
+                        currentImageIndex === index
+                          ? "bg-blue-600"
+                          : "bg-gray-300 hover:bg-gray-400"
+                      }`}
+                      aria-label={`View image ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              )}
 
               {/* Project Details - Remaining space with flex layout */}
               <div
-                className="flex flex-col justify-between p-6 text-gray-900"
-                style={{ height: "calc(650px - 320px)" }}
+                className={`flex flex-col justify-between text-gray-900 ${currentProject.images.length > 1 ? 'p-6 pt-3' : 'p-6'}`}
+                style={{ height: currentProject.images.length > 1 ? "calc(650px - 320px - 28px)" : "calc(650px - 320px)" }}
               >
                 <div>
                   <h4 className="text-2xl font-bold text-gray-900 mb-3">
